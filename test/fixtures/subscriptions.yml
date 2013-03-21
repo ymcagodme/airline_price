@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  depart_date: 2013-03-21
+  return_date: 2013-03-21
+  upper_priceline: 1.5
+  lower_priceline: 1.5
+  is_subscribed: false
+  user_id: 1
+
+two:
+  name: MyString
+  depart_date: 2013-03-21
+  return_date: 2013-03-21
+  upper_priceline: 1.5
+  lower_priceline: 1.5
+  is_subscribed: false
+  user_id: 1
