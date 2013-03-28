@@ -1,9 +1,9 @@
 defaults: &defaults
-  app_name: "airline_price"
-  domain: "http://airline_price.dev"    
-  facebook_app_id: 
-  facebook_secret: 
-  admin_emails: 
+  app_name: "Airline Price"
+  domain: "http://airlineprice.herokuapp.com"
+  facebook_app_id:
+  facebook_secret:
+  admin_emails:
     - ""
   google_analytics_key: ""
   default_logo_url: "/logo.png"
