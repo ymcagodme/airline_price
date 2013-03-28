@@ -18,5 +18,4 @@
 .env
 public/uploads
 vendor/bundler_gems
-config/config.yml
 config/database.yml
