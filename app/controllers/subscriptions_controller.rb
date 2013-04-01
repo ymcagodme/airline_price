@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   def index
     @subscriptions = current_user.subscriptions.paginate(:page => params[:page])
