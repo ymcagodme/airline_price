@@ -7,10 +7,15 @@ INTERVAL = 60
 
 count = 0
 
+print "Trip type> "
+trip = gets
+trip.chomp!
+puts "You choose #{trip} type"
+
+browser = Mechanize.new
 while true do
   start_time = Time.now
 
-  browser = Mechanize.new
 
   page = browser.post(POST_URI, {
     "adult" => "1",
@@ -18,27 +23,40 @@ while true do
     "cls"   => "Y",
     "depstn" => "LAX Los Angeles ",
     "arrstn" => "TPE Taipei(Taoyuan) ",
-    "trip"   => "RT",
-    "depmon" => "05MAY",
-    "retmon" => "06JUN",
+    "trip"   => trip.chomp,
+    "depmon" => "201305May",
+    "retmon" => "201306Jun",
     "depday" => "20",
-    "retday" => "05",
-    "depRef" => "2013-05-20",
-    "retRef" => "2013-06-05",
-    "fix"    => "fix"
+    "retday" => "05"
   })
 
   table = page.search('table #outboundTable')
-  rows = table.search('tr')
-  departure_date = rows.first.text.scan(/\d{2}\/\d{2}[a-zA-Z]{3}/)[3]
 
-  target_row = rows[4]
-  return_date = target_row.text.scan(/\d{2}\/\d{2}[a-zA-Z]{3}/).first
+  if trip == 'RT'
+    puts "Fetching Round Trip..."
+    rows = table.search('tr')
+    departure_date = rows.first.text.scan(/\d{2}\/\d{2}[a-zA-Z]{3}/)[3]
 
-  cols = target_row.search('td')
-  target_cell = cols[4]
+    target_row = rows[4]
+    return_date = target_row.text.scan(/\d{2}\/\d{2}[a-zA-Z]{3}/).first
 
-  fare = target_cell.text.strip
+    cols = target_row.search('td')
+    target_cell = cols[4]
+
+    fare = target_cell.text.strip
+  else
+    puts "Fetching Onw Way Trip..."
+    rows = table.search('tr')
+    departure_date = rows.first.text.scan(/\d{2}\/\d{2}[a-zA-Z]{3}/)[3]
+
+    target_row = rows[1]
+    return_date = 'N/A'
+
+    cols = target_row.search('td')
+    target_cell = cols[3]
+
+    fare = target_cell.text.strip
+  end
 
   elapsed_time = Time.now - start_time
 
@@ -56,3 +74,4 @@ while true do
   count += 1
   sleep(INTERVAL)
 end
+
