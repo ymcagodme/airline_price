@@ -28,5 +28,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  has_many :subsrciptions
+  has_many :subscriptions, :dependent => :delete_all
 end

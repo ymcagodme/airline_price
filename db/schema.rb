@@ -11,18 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321220225) do
+ActiveRecord::Schema.define(:version => 20130329004904) do
+
+  create_table "flight_prices", :force => true do |t|
+    t.float    "price"
+    t.integer  "subscription_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "subscriptions", :force => true do |t|
     t.string   "name"
     t.date     "depart_date"
     t.date     "return_date"
-    t.float    "upper_priceline"
-    t.float    "lower_priceline"
-    t.boolean  "is_subscribed"
+    t.boolean  "is_subscribed", :default => true
     t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.float    "priceline"
   end
 
   create_table "users", :force => true do |t|
