@@ -1,0 +1,12 @@
+<tr>
+  <td><%= link_to subscription.name, subscription %></td>
+  <td><%= subscription.depart_date %></td>
+  <td><%= subscription.return_date %></td>
+  <td><%= subscription.priceline %></td>
+  <td><%= subscription.current_price %></td>
+  <td><%= link_to 'Details', subscription, :class => 'btn btn-info' %></td>
+  <td><%= link_to 'Edit', edit_subscription_path(subscription), :class => 'btn btn-warning' %></td>
+  <td><%= link_to 'Delete', subscription, :class => 'btn btn-danger',
+                                          :method => :delete,
+                                          :confirm => 'Do you want to delete?' %></td>
+</tr>

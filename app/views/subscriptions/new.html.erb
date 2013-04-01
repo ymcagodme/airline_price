@@ -1,0 +1,7 @@
+<h3>Create a flight record</h3>
+<hr>
+<%= simple_form_for @subscription, :html => {:class => 'form'} do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.button :submit, 'Create', :class => 'btn-primary' %>
+  <%= link_to 'Cancel', subscriptions_path %>
+<% end %>

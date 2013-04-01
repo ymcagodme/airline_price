@@ -1,0 +1,26 @@
+<h3><%= @subscription.name %></h3>
+<%= link_to '<< back', subscriptions_path %>
+<%= link_to 'Edit', edit_subscription_path, :class => 'btn' %>
+<hr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Depart Date</th>
+      <th>Return Date</th>
+      <th>Priceline</th>
+      <th>Current Price</th>
+      <th>Highest Price</th>
+      <th>Lowest Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @subscription.depart_date %></td>
+      <td><%= @subscription.return_date %></td>
+      <td><%= @subscription.priceline %></td>
+      <td><%= @subscription.current_price %></td>
+      <td><%= @subscription.highest_price %></td>
+      <td><%= @subscription.lowest_price %></td>
+    </tr>
+  </tbody>
+</table>
