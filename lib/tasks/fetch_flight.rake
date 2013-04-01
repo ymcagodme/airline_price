@@ -38,9 +38,14 @@ task :fetch_flights => :environment do
     fare = target_cell.text.strip
     fare = fare.sub(/,/, "").to_f
 
-    if s.flight_prices.last.price != fare
+    if s.flight_prices.empty?
       s.flight_prices.create!(price: fare)
       count += 1
+    else
+      if s.flight_prices.last.price != fare
+        s.flight_prices.create!(price: fare)
+        count += 1
+      end
     end
   end
 
