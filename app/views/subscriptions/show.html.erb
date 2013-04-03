@@ -38,7 +38,7 @@
   <tbody>
     <% @subscription.flight_prices.each do |f| %>
     <tr>
-      <td><%= f.created_at %></td>
+      <td><%= f.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>
       <td><%= f.price %></td>
     </tr>
     <% end %>
