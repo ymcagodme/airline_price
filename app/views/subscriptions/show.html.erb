@@ -24,3 +24,23 @@
     </tr>
   </tbody>
 </table>
+
+<hr />
+<h4>History (<%= @subscription.flight_prices.count %>)</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date Time</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subscription.flight_prices.each do |f| %>
+    <tr>
+      <td><%= f.created_at %></td>
+      <td><%= f.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
